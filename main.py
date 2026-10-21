@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 app = FastAPI()
+from services.chat_service import ChatService
 
 @app.get("/")
 async def root():
@@ -8,3 +9,8 @@ async def root():
 @app.post("/healthz")
 async def healthcheck():
     return {"status": "healthy"}
+
+@app.get("/chat")
+async def chat():
+    return None
+

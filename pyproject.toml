@@ -4,8 +4,11 @@ version = "0.1.0"
 description = "trex agetic services"
 requires-python = ">=3.13"
 dependencies = [
+    "agno>=3.0.9",
     "fastapi>=0.141.1",
     "httpx>=0.28.1",
+    "ipykernel>=7.4.0",
+    "openai>=3.2.0",
     "python-dotenv>=1.2.3",
     "uvicorn>=0.52.3",
 ]
