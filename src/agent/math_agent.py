@@ -8,8 +8,8 @@ class MathAgent:
     def __init__(self,model="qwen3:4b"):
         self.model = model
         self.messages = []
-        self.system_prompt = """You are a math agent , use tools to calculate and expplain the answer. 
-                                if anyquery apart form math is being asked
+        self.system_prompt = """You are a math agent , use tools to calculate and explain the answer. 
+                                if any query apart form math is being asked
                                 please decaline the request gracefully """
 
     # Tools 
@@ -25,7 +25,7 @@ class MathAgent:
         """ multiply  two number a * b """
         return a*b
 
-    def divide (self,a:float, b: float) -> float:
+    def divide (self,a:float, b: float) -> str | float | int:
         """ divide two number a / b """
         if b ==0:
             return "undefined"
@@ -39,23 +39,28 @@ class MathAgent:
         self.messages.append( {"role": "user" , "content": query})
 
         tools = [self.add, self.subtract, self.multiply, self.divide]
+        print( '================input for LLM ========================')
+        print(self.messages)
+        print('========================================\n')
 
         for _ in range(5):
-            # LLM brain 
+            # LLM brain
+            print(f"agent is thinking .... ")
             response = chat(
                 model = self.model,
                 messages = self.messages,
-                tools = tools)
+                tools = tools,
+                think = True)
             
-            messages.append(response.message)
+            self.messages.append(response.message)
 
             # observe
             if not response.message.tool_calls:
                 return response.message.content
 
             for call in response.message.tool_calls:
-                name = call.fuction.name
-                args = call.fuction.arguments
+                name = call.function.name
+                args = call.function.arguments
 
                 # function executions
                 try:
@@ -71,7 +76,7 @@ class MathAgent:
                     "content": str(result)
                 })
 
-        return "maxium steps reached"
+        return "maximum steps reached"
 
 
 
