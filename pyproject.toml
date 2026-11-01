@@ -5,11 +5,15 @@ description = "trex agetic services"
 requires-python = ">=3.13"
 dependencies = [
     "agno>=3.0.9",
+    "beautifulsoup4>=4.15.0",
     "fastapi>=0.141.1",
     "httpx>=0.28.1",
     "ipykernel>=7.4.0",
+    "numpy>=2.5.4",
     "ollama>=0.6.3",
     "openai>=3.2.0",
+    "pypdf>=6.21.4",
+    "python-docx>=1.2.0",
     "python-dotenv>=1.2.3",
     "uvicorn>=0.52.3",
 ]
