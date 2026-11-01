@@ -3,9 +3,6 @@ import os
 import ollama
 import numpy as np
 
-
-
-
 class SimpleRAG:
     def __init__(self, embed_model = 'nomic-embed-text' , llm_model = 'gemma3:4b'):
         self.embed_model = embed_model
