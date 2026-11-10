@@ -43,5 +43,5 @@ class MultiFormatParser:
 
     def _parse_docx(self, path) -> dict:
         doc = Document(path)
-        pages_text = [para.text for para in doc.paragraph if para.text.strip()]
+        pages_text = [para.text for para in doc.paragraphs if para.text.strip()]
         return " ".join(pages_text)

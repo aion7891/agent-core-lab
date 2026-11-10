@@ -51,7 +51,8 @@ class MathAgent:
                 messages = self.messages,
                 tools = tools,
                 think = True)
-            
+
+            print(f"\n agents response : {response} .... \n  ")
             self.messages.append(response.message)
 
             # observe
