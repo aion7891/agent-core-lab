@@ -1,16 +1,13 @@
 from fastapi import FastAPI
-app = FastAPI()
-from services.chat_service import ChatService
+
+app = FastAPI(title="agent-core-lab")
+
 
 @app.get("/")
 async def root():
-    return {"This is a rex agent service for all types of agents !"}
+    return {"message": "This is a rex agent service for all types of agents!"}
 
-@app.post("/healthz")
+
+@app.get("/healthz")
 async def healthcheck():
     return {"status": "healthy"}
-
-@app.get("/chat")
-async def chat():
-    return None
-
