@@ -194,3 +194,5 @@ pnpm-debug.log*
 
 *.local
 config.local.*
+
+data/*
